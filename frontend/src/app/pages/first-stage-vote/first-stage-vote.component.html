@@ -1,0 +1,14 @@
+<div *ngIf="current$ | async as current" class="stage-1">
+  <app-vote-card
+    [name]="current"
+    [loading]="loading$ | async"
+    (onLike)="like($event)"
+    (onDislike)="dislike($event)"
+  ></app-vote-card>
+</div>
+<div *ngIf="!(current$ | async)" class="stage-1">
+  <div class="no-name">
+    Fin du vote
+    <a [routerLink]="['/games', gameId, 'results']">Résultats</a>
+  </div>
+</div>

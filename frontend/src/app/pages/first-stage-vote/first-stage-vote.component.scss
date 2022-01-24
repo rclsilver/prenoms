@@ -1,0 +1,17 @@
+.stage-1 {
+  display: flex;
+  flex-direction: column;
+
+  .no-name {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-weight: bold;
+    font-size: 2em;
+
+    a {
+      font-size: 0.5em;
+      text-decoration: none;
+    }
+  }
+}

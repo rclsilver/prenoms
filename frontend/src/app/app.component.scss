@@ -1,0 +1,14 @@
+.content {
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  .container-fluid {
+    display: flex;
+    flex-direction: column;
+
+    padding-top: 1em;
+    flex-grow: 1;
+  }
+}

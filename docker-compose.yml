@@ -35,7 +35,20 @@ services:
       - ${PWD}/server/app:/code/app:ro
       - ${PWD}/server/main.py:/code/main.py:ro
     ports:
-      - 8000:8000
+      - 8000
+
+  frontend:
+    image: prenoms-frontend
+    build:
+      context: frontend
+      target: devel-stage
+    volumes:
+    - ./frontend:/app
+    environment:
+      NPM_CONFIG_PREFIX: /tmp
+    command: sh -c 'npm install && npm install --only=dev && npm start'
+    ports:
+    - 4200
 
   nginx:
     image: nginx
