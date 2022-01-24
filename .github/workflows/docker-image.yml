@@ -22,16 +22,22 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
-      - name: Build and push server
+      - name: Build server image
         uses: docker/build-push-action@v2
         with:
           context: server
-          push: true
+          push: false
           tags: ${{ github.repository }}-server:latest
 
-      - name: Build and push frontend
+      - name: Build frontend image
         uses: docker/build-push-action@v2
         with:
           context: frontend
-          push: true
+          push: false
           tags: ${{ github.repository }}-frontend:latest
+
+      - name: Build and push final image
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          tags: ${{ github.repository }}:latest
